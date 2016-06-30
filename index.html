@@ -1,0 +1,543 @@
+<!--
+slidedeck: A modification of the Google IO 2012 HTML5 slide template
+URL: https://github.com/rmcgibbo/slidedeck
+
+Based on https://github.com/francescolaffi/elastic-google-io-slides, and
+ultimately:
+
+Google IO 2012 HTML5 Slide Template
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Autour du GO</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+   <link rel="shortcut icon" href=" figures/golang.icon.png"/> 
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/custom.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides", src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+
+
+  <!-- MathJax support  -->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    showProcessingMessages: false,
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    TeX: {
+      extensions: ["color.js"]
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+  </script>
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <div style="display:hidden">
+  \[
+    \definecolor{data}{RGB}{18,110,213}
+    \definecolor{unknown}{RGB}{217,86,16}
+    \definecolor{learned}{RGB}{175,114,176}
+  \]
+  </div>
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+<slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+
+    <h1> Autour du GO</h1>
+    <h2> Présentation du langage Go</h2>
+    <p> Martin Piegay</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Au programme :</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>
+<p>15 minutes de présentation du langage</p>
+</li>
+<li>
+<p>15 minutes d'atelier</p>
+</li>
+</ul>
+<p>Suivez cette présentation sur :</p>
+<p><a href="https://cocap10.github.io/GolangTz/">https://cocap10.github.io/GolangTz/</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>GO ?</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>créer par Google</li>
+<li>GO 1.0 en Mars 2012</li>
+<li>open source</li>
+<li>simple, efficace et lisible</li>
+<li>on dit souvant <strong>golang</strong></li>
+</ul>
+<p>Lui c'est Gopher : <img height=200 src=figures/golang.png /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les +</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>compilation 80% à 90% plus rapide qu'en C</li>
+<li>garbage collecté</li>
+<li>fortement typé</li>
+<li>binaire linké statiquement</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les -</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>mauvaise gestion des dépendance nativement</li>
+<li>pas vraiment orienté objet</li>
+<li>pas encore d'IDE parfait</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les outils natifs</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li><code>go build</code>: build les binaires</li>
+<li><code>go test</code>: lancer les tests unitaires, benchmark, couverture </li>
+<li><code>go fmt</code>: formate le code</li>
+<li><code>go run</code>: raccourci pour builder et lancer le programme </li>
+<li><code>godoc</code>: génère la doc</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Hello, Playground!</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><a href="http://play.golang.org/">http://play.golang.org/</a> Un service Web qui :</p>
+<ul>
+<li>compile, lies, et exécute le programme à l'intérieur d'un bac à sable</li>
+<li>puis renvoie le résultat.</li>
+</ul>
+<pre class="prettyprint" data-lang="go">
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    fmt.Println("Hello, playground")
+}
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Un exemple trivial</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="go">
+package main
+
+import (
+    "fmt"
+    "math/rand"
+)
+
+func main() {
+    fmt.Println("My favorite number is", rand.Intn(10))
+}
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les variables et constantes</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Définition et initialisation des variables :
+<pre class="prettyprint" data-lang="go">
+// Definition puis initialisation
+var myVar string
+myVar = "Hello you"
+// Ou tout en un avec :=
+anotherVar := "Hello TechnoZore"
+</pre></p>
+<p>Définition des constantes :
+<pre class="prettyprint" data-lang="go">
+package main
+import "fmt"
+const (
+  Pi = 3.14
+  Zero = 0
+)
+</pre></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les types</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Les types de base :</p>
+<ul>
+<li>bool, </li>
+<li>string, </li>
+<li>int(8 ou 16, 32, 64), </li>
+<li>uint(8 ou 16, 32, 64), </li>
+<li>byte, rune (Unicode),</li>
+<li>float32(ou 64),</li>
+<li>complex64(ou 128)</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les conditions</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="go">
+  if num := -11 num < 0 {
+        fmt.Println(num, "is negative")
+    } else if num < 10 {
+        fmt.Println(num, "has 1 digit")
+    } else {
+        fmt.Println(num, "has multiple digits")
+    }
+    num := 9
+    switch {
+    case num < 0:
+        fmt.Println(num, "is negative")
+    case num < 10:
+        fmt.Println(num, "has 1 digit")
+    default:
+        fmt.Println(num, "has multiple digits")
+
+    }
+</pre>
+
+<p><a href="https://play.golang.org/p/9XOsQMh7lO">Essayer</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les fonctions</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="go">
+func addAndEven(x, y int) (sum int, even bool) {
+    sum = x + y
+    if sum%2 != 1 {
+        even = true
+    }
+    return
+}
+
+func main() {
+    x := 11
+    y := 3
+    mySum, myEven := addAndEven(x, y)
+    fmt.Printf("%d + %d = %d is even ? %t\n", x, y, mySum, myEven)
+}
+</pre>
+
+<p><a href="https://play.golang.org/p/sNsXJ_3eTE">Essayer</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les structs</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="go">
+type Person struct {
+  Name string
+  Age  int
+  isAdult bool
+}
+
+p := &Person{
+  Name: "Greg",
+  Age:  25,
+  isAdult : true,
+}
+
+fmt.Println(p.Name)
+</pre>
+
+<p><a href="https://play.golang.org/p/Qcfgg_Px1_">Essayer</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les méthodes des structs</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="go">
+func (p *Person) CanEnterPub() bool {
+    return p.isAdult
+}
+
+person.CanEnterPub()
+</pre>
+
+<p><a href="https://play.golang.org/p/0Geqb9Gc81">Essayer</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les pointeurs</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>Comme en C/C++ : Un pointeur contient l'adresse mémoire d'une variable</li>
+<li>Mais Go est garbage collecté donc pas besoin de gérer les allocations :)</li>
+<li>On utilise les même opérateur qu'en C/C++ : <code>*</code> et <code>&amp;</code></li>
+</ul>
+<pre class="prettyprint" data-lang="go">
+var p *int
+i := 42
+p = &i
+</pre>
+
+<p><a href="https://play.golang.org/p/XmxN_QIrqd">Essayer</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les collections</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Il y a plusieur type de collection de Go :
+<pre class="prettyprint" data-lang="go">
+  // Les Arrays : tableaux de taille fixe
+    var intArray [10]int
+    intArray[5] = 5
+    // Les Slices : tableaux de taille variable
+    var intSlice []int
+    intSlice = append(intSlice, 1, 2, 3)
+    // Les Maps
+    var stringIntMap map[string]int
+    stringIntMap["toto"] = 4
+</pre></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les boucles</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Go a une seule structure de boucle, la boucle <code>for</code>:
+<pre class="prettyprint" data-lang="go">
+stringArray := [5]string{"un", "deux", "trois", "quatre", "cinq"}
+for i, str := range stringArray {
+    fmt.Printf("%d: %s\n", i, str)
+}
+</pre>
+<a href="https://play.golang.org/p/xZyaDf0WtT">Essayer</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les Goroutines</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Les Goroutines sont des processus léger :</p>
+<ul>
+<li>elles s'exécutent </li>
+<li>dans le même espace d'adressage</li>
+<li>on peut en lancer pres de 100 000 à la fois</li>
+<li>la charge est distribué automatiquement sur les CPU</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les Goroutines exemple</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="go">
+say(s string) {
+    for i := 0; i < 5; i++ {
+        time.Sleep(100 * time.Millisecond)
+        fmt.Println(s)
+    }
+}
+func main() {
+    go say("world")
+    say("hello")
+}
+</pre>
+
+<p><a href="https://play.golang.org/p/6PHXHha_Uv">Essayer</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Les channels</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Les Goroutines communiques avec des channels. 
+Ce sont des conduits typés à travers lesquels vous pouvez envoyer et recevoir des valeurs.
+On utilise l'opérateur de canal : <code>&lt;-</code>
+exemple :
+<pre class="prettyprint" data-lang="go">
+ch := make(chan int, 2)
+ch &lt;- 1
+ch &lt;- 2
+fmt.Println(&lt;-ch)
+Fmt.Println(&lt;-ch)
+</pre>
+<a href="https://play.golang.org/p/ch4u4pu2ji">Essayer</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Le Web</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="go">
+package main
+
+import (
+    "fmt"
+    "net/http"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+}
+
+func main() {
+    http.HandleFunc("/", handler)
+    http.ListenAndServe(":8080", nil)
+}
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Atelier un FizzBuzz jusqu'à 100</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>1) Connectez-vous sur <a href="https://play.golang.org/">https://play.golang.org/</a></li>
+<li>2) Codez une boucle qui affiche les 100 entier </li>
+<li>3) Avec un switch ou des if testez à chaque itération :
+si l'entier est multiple de 5, afficher à la suite du nombre le mot « fizz »
+si l'entier est multiple de 7, afficher à la suite du nombre le mot « buzz »
+si l'entier est à la fois un multiple de 5 et de 7, afficher à la suite du nombre le mot « fizzbuzz »</li>
+<li>4) Mettez le test dans une fonction appeler à chaque itération</li>
+<li>5) Essayer d'utiliser la fonction en Goroutines (les paramètres seront des channels)  </li>
+</ul>
+<p>Let's Go ;)</p></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <!-- <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside> -->
+  <article class="flexbox vleft auto-fadein">
+    <h2> Thank you!</h2>
+    <p></p>
+  </article>
+  <p data-config-contact class="auto-fadein"> <a href="https://twitter.com/Martouf42">@Martouf42</a><br/> <span>github</span> <a href="http://github.com">cocap10</a></p>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
