@@ -249,7 +249,7 @@ const (
       <h3></h3>
     </hgroup>
     <article ><pre class="prettyprint" data-lang="go">
-  if num := -11 num < 0 {
+  if num := -11; num < 0 {
         fmt.Println(num, "is negative")
     } else if num < 10 {
         fmt.Println(num, "has 1 digit")
@@ -456,7 +456,7 @@ ch := make(chan int, 2)
 ch &lt;- 1
 ch &lt;- 2
 fmt.Println(&lt;-ch)
-Fmt.Println(&lt;-ch)
+fmt.Println(&lt;-ch)
 </pre>
 <a href="https://play.golang.org/p/ch4u4pu2ji">Essayer</a></p></article>
  
@@ -495,16 +495,16 @@ func main() {
       <h3></h3>
     </hgroup>
     <article ><ul>
-<li>1) Connectez-vous sur <a href="https://play.golang.org/">https://play.golang.org/</a></li>
-<li>2) Codez une boucle qui affiche les 100 entier </li>
-<li>3) Avec un switch ou des if testez à chaque itération :
-si l'entier est multiple de 5, afficher à la suite du nombre le mot « fizz »
-si l'entier est multiple de 7, afficher à la suite du nombre le mot « buzz »
-si l'entier est à la fois un multiple de 5 et de 7, afficher à la suite du nombre le mot « fizzbuzz »</li>
-<li>4) Mettez le test dans une fonction appeler à chaque itération</li>
-<li>5) Essayer d'utiliser la fonction en Goroutines (les paramètres seront des channels)  </li>
+<li>1) Connectez-vous sur <a href="https://play.golang.org/">play.golang.org</a> ou sur <a href="https://c9.io">c9.io</a></li>
+<li>2) Codez une boucle qui affiche les 100 entier dans le <code>main</code>: </li>
 </ul>
-<p>Let's Go ;)</p></article>
+<p>Si l'entier est multiple de 5, afficher le mot « fizz ». </p>
+<p>Si l'entier est multiple de 7, afficher le mot « buzz »</p>
+<p>Si l'entier est à la fois un multiple de 5 et de 7, afficher le mot « fizzbuzz »</p>
+<ul>
+<li>3) Deplacez la condition dans une fonction qui sera appeler à chaque itération</li>
+<li>4) Essayer d'utiliser la fonction en Goroutines (les paramètres seront des channels)</li>
+</ul></article>
  
 </slide>
 

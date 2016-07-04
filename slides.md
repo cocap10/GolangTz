@@ -128,7 +128,7 @@ Les types de base :
 title: Les conditions
 
 <pre class="prettyprint" data-lang="go">
-  if num := -11 num < 0 {
+  if num := -11; num < 0 {
 		fmt.Println(num, "is negative")
 	} else if num < 10 {
 		fmt.Println(num, "has 1 digit")
@@ -282,7 +282,7 @@ ch := make(chan int, 2)
 ch <- 1
 ch <- 2
 fmt.Println(<-ch)
-Fmt.Println(<-ch)
+fmt.Println(<-ch)
 </pre>
 [Essayer](https://play.golang.org/p/ch4u4pu2ji)
 
@@ -309,14 +309,14 @@ func main() {
 ---
 title: Atelier un FizzBuzz jusqu'à 100
 
-- 1) Connectez-vous sur [https://play.golang.org/](https://play.golang.org/)
-- 2) Codez une boucle qui affiche les 100 entier 
-- 3) Avec un switch ou des if testez à chaque itération :
-si l'entier est multiple de 5, afficher à la suite du nombre le mot « fizz »
-si l'entier est multiple de 7, afficher à la suite du nombre le mot « buzz »
-si l'entier est à la fois un multiple de 5 et de 7, afficher à la suite du nombre le mot « fizzbuzz »
-- 4) Mettez le test dans une fonction appeler à chaque itération
-- 5) Essayer d'utiliser la fonction en Goroutines (les paramètres seront des channels)  
+- 1) Connectez-vous sur [play.golang.org](https://play.golang.org/) ou sur [c9.io](https://c9.io)
+- 2) Codez une boucle qui affiche les 100 entier dans le `main`: 
 
+Si l'entier est multiple de 5, afficher le mot « fizz ». 
 
-Let's Go ;)
+Si l'entier est multiple de 7, afficher le mot « buzz »
+
+Si l'entier est à la fois un multiple de 5 et de 7, afficher le mot « fizzbuzz »
+
+- 3) Deplacez la condition dans une fonction qui sera appeler à chaque itération
+- 4) Essayer d'utiliser la fonction en Goroutines (les paramètres seront des channels)  
