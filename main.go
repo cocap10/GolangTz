@@ -5,5 +5,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello TechnoZore !")
+	for i := 0; i < 100; i++ {
+		fmt.Printf("%d\n", i)
+	}
 }
