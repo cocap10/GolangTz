@@ -4,18 +4,27 @@ import (
 	"fmt"
 )
 
-func fizzbuzz(number int) (msg string) {
-	if number%5 == 0 {
-		msg = "fizz"
+func fizzbuzz(numbers chan int, messages chan string) {
+	for {
+		number := <-numbers
+		var msg string
+		if number%5 == 0 {
+			msg = "fizz"
+		}
+		if number%7 == 0 {
+			msg += "buzz"
+		}
+		messages <- msg
 	}
-	if number%7 == 0 {
-		msg += "buzz"
-	}
-	return
 }
 
 func main() {
+	numbers := make(chan int)
+	messages := make(chan string)
+	go fizzbuzz(numbers, messages)
 	for i := 0; i < 100; i++ {
-		fmt.Printf("%d %s\n", i, fizzbuzz(i))
+		numbers <- i
+		msg := <-messages
+		fmt.Printf("%d %s\n", i, msg)
 	}
 }
