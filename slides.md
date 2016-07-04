@@ -21,7 +21,7 @@ Suivez cette présentation sur :
 ---
 title: GO ?
 
-- créer par Google
+- créé par Google
 - GO 1.0 en Mars 2012
 - open source
 - simple, efficace et lisible
@@ -309,7 +309,7 @@ func main() {
 ---
 title: Atelier un FizzBuzz jusqu'à 100
 
-- 1) Connectez-vous sur [play.golang.org](https://play.golang.org/) ou sur [c9.io](https://c9.io)
+- 1) Connectez-vous sur [play.golang.org](https://play.golang.org/) ou sur [nitrous.io](https://nitrous.io)
 - 2) Codez une boucle qui affiche les 100 entier dans le `main`: 
 
 Si l'entier est multiple de 5, afficher le mot « fizz ». 
